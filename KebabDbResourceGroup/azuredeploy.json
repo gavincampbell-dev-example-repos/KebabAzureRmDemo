@@ -105,5 +105,11 @@
       }
     }
   ],
-  "outputs": {}
+  "outputs": {
+    "functionAppName" : {
+      "type": "string",
+      "value": "[parameters('functionAppName')]"
+
+    }
+  }
 }
