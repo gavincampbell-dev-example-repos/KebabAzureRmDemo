@@ -116,7 +116,7 @@
       "value": "[Concat('https://',parameters('database_account_name'),'.documents.azure.com:443')]"
     },
     "docDbKey": {
-      "type": "securestring",
+      "type": "string",
       "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('database_account_name')), '2015-04-08').primaryMasterKey]"
     }
   }
