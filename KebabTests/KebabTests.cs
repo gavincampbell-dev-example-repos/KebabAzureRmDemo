@@ -56,7 +56,10 @@ namespace KebabTests
         {
             using (var client = new DocumentClient(docDbUri, docDbKey))
             {
-                var db = client.CreateDatabaseQuery().Where(d => d.Id == dbName).ToList().First();
+                var db = client.CreateDatabaseQuery().Where(d => d.Id == dbName).ToList().FirstOrDefault();
+
+                if (db is null) return; //the database doesn't exist 
+                
                 var dc = client.CreateDocumentCollectionQuery(db.CollectionsLink).Where(c => c.Id == collectionName).ToList().First();
                 var docs = client.CreateDocumentQuery(dc.DocumentsLink);
 
