@@ -106,10 +106,18 @@
     }
   ],
   "outputs": {
-    "functionAppName" : {
+    "functionAppName": {
       "type": "string",
       "value": "[parameters('functionAppName')]"
 
+    },
+    "docDbUri": {
+      "type": "string",
+      "value": "[Concat('https://',parameters('database_account_name'),'.documents.azure.com:443')]"
+    },
+    "docDbKey": {
+      "type": "securestring",
+      "value": "[listKeys(resourceId('Microsoft.DocumentDb/databaseAccounts', parameters('database_account_name')), '2015-04-08').primaryMasterKey]"
     }
   }
 }
